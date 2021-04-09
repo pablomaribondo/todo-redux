@@ -2,14 +2,12 @@ import { useSelector } from "react-redux";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const todos = useSelector(state => state.todos);
+  const todos = useSelector(state => state);
 
   return (
     <div className="my-4">
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {Array.isArray(todos) &&
+        todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
     </div>
   );
 };
